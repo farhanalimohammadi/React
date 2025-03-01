@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.overflow{
+    @apply text-textsColor-texts;
+    overflow-y: scroll;
+}
+.overflow::-webkit-scrollbar{
+    @apply text-textsColor-texts;
+    width: 3px;
+}
+.overflow::-webkit-scrollbar-thumb{
+    @apply text-textsColor-texts;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.overflow::-webkit-scrollbar-track{
+    @apply text-textsColor-texts;
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.shadow-for-circle1{
+    box-shadow: 0px 0px 200px -20px #1481FE;
+    border-radius: 150px;
+    filter:drop-shadow(0px 0px 10px #1481FE);
+}
+.word-spacing{
+    @apply text-white;
+    word-spacing: 3px;
+}
+.glass-effect{
+    background: rgba( 255, 255, 255, 0.1 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 5.5px );
+    -webkit-backdrop-filter: blur( 5.5px );
+    border: 0.25px solid #727272;
+}
+.glass-effect2{
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8.8px);
+    -webkit-backdrop-filter: blur(8.8px);
+}
+.bg-1{
+    background-image: url('./Icons/pngIcons/countereis/Europe-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+.gradient-border{
+    @apply text-white;
+    position: relative;
+    border-radius: 16px;
+    padding: 2px;
+    /* mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor; */
+    background-clip: padding-box;
+}
+.gradient-border-left{
+    @apply text-white;
+    position: relative;
+    padding: 1px;
+    /* mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor; */
+    background-clip: padding-box;
+}
+::-webkit-scrollbar{
+    width: 3px;
+    background-color: #1E1E1E;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #1481FE;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+::-webkit-scrollbar-track{
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.glass-effect3{
+    @apply text-white ; 
+    /* From https://css.glass */
+    background: rgba(20, 129, 254, 0.16);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 2px solid #1481FE;
+}
+.glass-effect4{
+    @apply text-white ; 
+    /* From https://css.glass */
+    background: rgba(38, 39, 41, 0.18);
+    backdrop-filter: blur(3.6px);
+    -webkit-backdrop-filter: blur(3.6px);
+}
+.glass-effect5{
+    @apply text-white ; 
+/* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 0.25px solid rgba(255, 255, 255, 0.3);
+    color: #090909ca;
+}
+
+.item-1:first-child{
+    border-top-left-radius: 12px;
+}
+.item-1:last-child{
+    border-bottom-left-radius: 12px;
+    border: none;
+}
+
+.item-2:first-child{
+    border-radius: none;
+}
+.item-2:last-child{
+    border-radius: none;
+    border: none;
+}
+
+.item-3:first-child{
+    border-top-right-radius: 12px;
+}
+.item-3:last-child{
+    border-bottom-right-radius: 12px;
+    border: none;
+}
+.t-rows:nth-child(even){
+    background-color: #292A2D;
+}
+  
+
+  

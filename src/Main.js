@@ -281,6 +281,7 @@ const TraderLayout = React.lazy(() => import("./Trader/layout"));
 const NotFound = React.lazy(() => import("./NotFound/NotFound"));
 
 const router = createBrowserRouter([
+
   { path: "/", element: <Suspense fallback={<div>Loading...</div>}><Home /></Suspense> },
   { path: "/users/:sign", element: <Suspense fallback={<div>Loading...</div>}><Login /></Suspense> },
   { path: "/trader",
@@ -297,7 +298,7 @@ const router = createBrowserRouter([
     children: faq,
   },
   { path: "*", element: <Suspense fallback={<div>Loading...</div>}><NotFound /></Suspense> },
-]);
+], { basename: "/" });
 
 
 

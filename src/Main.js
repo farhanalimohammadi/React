@@ -1,4 +1,3 @@
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // import React, { lazy, Suspense } from "react";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -158,41 +157,40 @@
 // }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import React , { lazy , Suspense} from "react";
-import { Navigate } from "react-router-dom";
+import React, { lazy, Suspense } from "react";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import ProtectedRoute from "./signUp-signIn-pages/componets/prodacted-Routes";
 
 //Main branches of Trader :
-const Trader = React.lazy(() => import("./Trader/Trader"));
+const Trader = lazy(() => import("./Trader/Trader"));
    //Pages of Account-overview branch
-const Accounts = React.lazy(() => import("./Accounts-Page/index-Of-Account"));
-const ShoppingPage = React.lazy(() => import("./Shopping-page/index-of-Shopping-page"));
-const FreeShopping = React.lazy(() => import("./Free-Shopping-pege/index-of-page"));
-const Analysis = React.lazy(() => import("./Analisys-page/index-of-AnalisysPage"));
-const Payment = React.lazy(() => import("./Payment-Page/index-Of-Payment"));
-const AccountIndex = React.lazy(() => import("./Accounts-Page/index-Of-Accounts2"));
+const Accounts = lazy(() => import("./Accounts-Page/index-Of-Account"));
+const ShoppingPage = lazy(() => import("./Shopping-page/index-of-Shopping-page"));
+const FreeShopping = lazy(() => import("./Free-Shopping-pege/index-of-page"));
+const Analysis = lazy(() => import("./Analisys-page/index-of-AnalisysPage"));
+const Payment = lazy(() => import("./Payment-Page/index-Of-Payment"));
+const AccountIndex = lazy(() => import("./Accounts-Page/index-Of-Accounts2"));
    //Pages of Profile branch
-const AllProfile = React.lazy(() => import("./Profile-page/index-of-allProfile"));
-const Profile = React.lazy(() => import("./Profile-page/Nav-Indexs/index-of-profile"));
-const ProfileAccount = React.lazy(() => import("./Profile-page/Nav-Indexs/index-of-account"))
-const ProfileSecurity = React.lazy(() => import("./Profile-page/Nav-Indexs/index-of-security"))
-const ProfileIdentity = React.lazy(() => import("./Profile-page/Nav-Indexs/index-of-identity"))
-const ProfileLetters = React.lazy(() => import("./Profile-page/Nav-Indexs/index-of-NewLetters"))
-const ProfilePoints = React.lazy(() => import("./Profile-page/Nav-Indexs/index-of-points"))
-const Dashbord = React.lazy(() => import("./Dashbord-Of-Admin/index-of-Dashbord"))
-const DashbordLayout = React.lazy(() => import("./Dashbord-Of-Admin/components/layout/Dashbord-Layout"))
-const User = React.lazy(() => import("./Dashbord-Of-Admin/components/user/user"))
-const DashbordProfile = React.lazy(() => import("./Dashbord-Of-Admin/components/user/user-Profile"))
-const UsersLayout = React.lazy(() => import("./Dashbord-Of-Admin/components/user/users-Layout"))
-const DashbordOrder = React.lazy(() => import("./Dashbord-Of-Admin/components/user/users-Order"))
-const BillingPage = React.lazy(() => import("./billing-page-Admin-User/index-Of-User-billing"))
-const AdminBillingPage = React.lazy(() => import("./billing-page-Admin-User/index-Of-Admin-Billing"))
-const DownloadPage = React.lazy(() => import("./Download-Page/index-Of-Download"))
-const Ticket = React.lazy(() => import("./Ticket-Page/index-Of-Ticket"))
-const Frequently = React.lazy(() => import("./FAQ-Pages/index-of-faq"))
-const FrequentlyLayout = React.lazy(() => import("./FAQ-Pages/layout"))
-const FrequentlysPages = React.lazy(() => import("./FAQ-Pages/components/faq-pages"))
+const AllProfile = lazy(() => import("./Profile-page/index-of-allProfile"));
+const Profile = lazy(() => import("./Profile-page/Nav-Indexs/index-of-profile"));
+const ProfileAccount = lazy(() => import("./Profile-page/Nav-Indexs/index-of-account"))
+const ProfileSecurity = lazy(() => import("./Profile-page/Nav-Indexs/index-of-security"))
+const ProfileIdentity = lazy(() => import("./Profile-page/Nav-Indexs/index-of-identity"))
+const ProfileLetters = lazy(() => import("./Profile-page/Nav-Indexs/index-of-NewLetters"))
+const ProfilePoints = lazy(() => import("./Profile-page/Nav-Indexs/index-of-points"))
+const Dashbord = lazy(() => import("./Dashbord-Of-Admin/index-of-Dashbord"))
+const DashbordLayout = lazy(() => import("./Dashbord-Of-Admin/components/layout/Dashbord-Layout"))
+const User = lazy(() => import("./Dashbord-Of-Admin/components/user/user"))
+const DashbordProfile = lazy(() => import("./Dashbord-Of-Admin/components/user/user-Profile"))
+const UsersLayout = lazy(() => import("./Dashbord-Of-Admin/components/user/users-Layout"))
+const DashbordOrder = lazy(() => import("./Dashbord-Of-Admin/components/user/users-Order"))
+const BillingPage = lazy(() => import("./billing-page-Admin-User/index-Of-User-billing"))
+const AdminBillingPage = lazy(() => import("./billing-page-Admin-User/index-Of-Admin-Billing"))
+const DownloadPage = lazy(() => import("./Download-Page/index-Of-Download"))
+const Ticket = lazy(() => import("./Ticket-Page/index-Of-Ticket"))
+const Frequently = lazy(() => import("./FAQ-Pages/index-of-faq"))
+const FrequentlyLayout = lazy(() => import("./FAQ-Pages/layout"))
+const FrequentlysPages = lazy(() => import("./FAQ-Pages/components/faq-pages"))
 
 const traderRoutes = [
   { index: true , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Trader/></ProtectedRoute></Suspense> },
@@ -275,13 +273,12 @@ const faq = [
     ),
   },
 ];
-const Home = React.lazy(() => import("./Main-page-or-Home/index-of-Main"));
-const Login = React.lazy(() => import("./signUp-signIn-pages/sign-Up-In"));
-const TraderLayout = React.lazy(() => import("./Trader/layout"));
-const NotFound = React.lazy(() => import("./NotFound/NotFound"));
+const Home = lazy(() => import("./Main-page-or-Home/index-of-Main"));
+const Login = lazy(() => import("./signUp-signIn-pages/sign-Up-In"));
+const TraderLayout = lazy(() => import("./Trader/layout"));
+const NotFound = lazy(() => import("./NotFound/NotFound"));
 
 const router = createBrowserRouter([
-
   { path: "/", element: <Suspense fallback={<div>Loading...</div>}><Home /></Suspense> },
   { path: "/users/:sign", element: <Suspense fallback={<div>Loading...</div>}><Login /></Suspense> },
   { path: "/trader",
@@ -298,9 +295,7 @@ const router = createBrowserRouter([
     children: faq,
   },
   { path: "*", element: <Suspense fallback={<div>Loading...</div>}><NotFound /></Suspense> },
-], { basename: "/" });
-
-
+]);
 
 export default function Routes() {
   return <RouterProvider router={router} />;

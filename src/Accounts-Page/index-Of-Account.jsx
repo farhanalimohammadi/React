@@ -63,22 +63,11 @@
 
 import React from "react";
 
-import Sidebar from "../staticElems/sidebar";
-import FirstHeader from "../staticElems/header-1";
-import TraderLayout from "../Trader/layout";
+import { Outlet } from "react-router-dom";
 
 
 
 export default function Accounts2(){
 
-    return (
-        <div className="flex flex-col min-h-screen bg-componentBg-primeryBg justify-start w-full box-border">
-            <FirstHeader/>
-            <div className="flex flex-row w-full min-h-screen">
-                <Sidebar/>
-                <TraderLayout/>
-            </div>
-
-        </div>
-    )
+    return <Outlet/>
 }

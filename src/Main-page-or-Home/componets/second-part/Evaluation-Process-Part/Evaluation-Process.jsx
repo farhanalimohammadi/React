@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 
-export default function Steps() {
+export default function Steps({evaluationRef}) {
 
     const firstSteps = [
         {name: 'Step 01' , title : 'FTMO Challenge' , content: 'The FTMO Challenge educates traders and leads them to master their trading habits. Traders demonstrate their experience by following our Trading Objectives inspired by key risk management rules. After completing an FTMO Challenge, traders move on to the Verification step.' },
@@ -12,8 +12,9 @@ export default function Steps() {
 
         {colors: ['C6571F' , 'C6571F80' , 'C6571F00' , '#F07F4A' , '#2C0F01' , '#C6571F'], name: "Step 04" , title: "Professional Trader" , content : "The absolute best FTMO Traders can get an opportunity through our Premium Programme to become professional traders in Quantlane, a proprietary trading firm that manages its own real capital. They are a mix of traders, quants, mathematicians, and developers driven by the same passion for the financial markets. This is the final goal of a trading career which FTMO envisioned." , secondTitle:"Quantlane" , options: ["Contract with fixed salary" , "Performance & Mindset coach" , 'Institutional Trading Conditions - Spreads , Liquidity , Risk , Framework' , "Custom Platform & Tools"] , svg : [ '' , '' , '' , '' ] }
     ]
+    
     return(
-        <div className="w-[85%] flex flex-col justify-between items-center gap-y-8">
+        <div ref={evaluationRef} className="w-[85%] flex flex-col justify-between items-center gap-y-8">
 
             <div className="flex flex-row w-full justify-start items-center">
                 <h3 className="text-textsColor-texts text-[32px] font-medium leading-[48px] ">Show us your talent and be rewarded</h3>

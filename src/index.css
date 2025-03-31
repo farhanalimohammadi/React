@@ -158,6 +158,14 @@
 .t-rows:nth-child(even){
     background-color: #292A2D;
 }
+.search-icon{
+    @apply stroke-textsColor-texts
+}
+.search-input:focus + .search-icon {
+    @apply text-white ; 
+    stroke: #1481FE;
+}
+
   
 
   

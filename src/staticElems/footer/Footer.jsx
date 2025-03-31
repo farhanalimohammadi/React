@@ -10,7 +10,7 @@ import Play from '../../Icons/pngIcons/Frame-Play.png'
 export default function Footer(){
 
     return(
-        <div className="w-full bg-componentBg-mainBg px-[88px] py-[65px] flex flex-col justify-center items-center gap-y-12 mt-[120px]">
+        <div className="w-full bg-componentBg-mainBg px-[88px] py-[65px] flex flex-col z-10 justify-center items-center gap-y-12 mt-[120px]">
             <div className="w-full flex flex-row justify-start items-start gap-x-[16%]">
                 <div className="flex flex-col justify-start items-start gap-y-8">
                     <h3 className="text-[32px] text-textsColor-texts font-medium">Logo Place</h3>

@@ -23,7 +23,7 @@ export default function FirstHeader(){
     }, [lastScroll])
 
     return(
-            <div className={`Header flex flex-row justify-between items-center bg-componentBg-mainBg w-full py-YP px-XP transition-all duration-300 ease-linear fixed top-0 left-0 ${showScroll ? " translate-y-0" : "translate-y-[-77px]"}`}>
+            <div className={`Header flex flex-row justify-between items-center bg-componentBg-mainBg w-full py-YP px-XP transition-all  z-50 duration-300 ease-linear fixed top-0 left-0 ${showScroll ? " translate-y-0" : "translate-y-[-77px]"}`}>
                 <h1 className='text-logoSize text-textsColor-texts '>Logo Place</h1>
                 <div className='flex flex-row justify-center items-center gap-x-[16px]'>
                     <span className="name text-nameSize text-textsColor-texts">محمد</span>

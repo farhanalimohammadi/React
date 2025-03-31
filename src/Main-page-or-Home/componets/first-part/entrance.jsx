@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function FirstPart(){
     return(
@@ -21,12 +22,12 @@ export default function FirstPart(){
             </div>
 
             <div className="flex flex-row justify-between items-center gap-x-8">
-                <button className="w-[208px] flex justify-center items-center py-[16px] px-[30px] bg-btnColors-Mailblue rounded-lg text-textsColor-texts text-nameSize font-bold outline-none border-[2px] border-solid border-btnColors-Mailblue hover:bg-componentBg-primeryBg hover:text-btnColors-Mailblue transition-all duration-500 delay-100">
+                <Link to={"/trader/accountoverview/shopping"} className="w-[208px] flex justify-center items-center py-[16px] px-[30px] bg-btnColors-Mailblue rounded-lg text-textsColor-texts text-nameSize font-bold outline-none border-[2px] border-solid border-btnColors-Mailblue hover:bg-componentBg-primeryBg hover:text-btnColors-Mailblue transition-all duration-500 delay-100">
                     FTMO CHALLENGE
-                </button>
-                <button className="w-[208px] flex justify-center items-center py-[16px] px-[30px] bg-componentBg-primeryBg rounded-lg text-btnColors-Mailblue text-nameSize font-bold border-[2px] border-solid border-btnColors-Mailblue hover:bg-btnColors-Mailblue hover:text-textsColor-texts transition-all duration-500 delay-100">
+                </Link>
+                <Link to={"/trader/accountoverview/freeshopping"} className="w-[208px] flex justify-center items-center py-[16px] px-[30px] bg-componentBg-primeryBg rounded-lg text-btnColors-Mailblue text-nameSize font-bold border-[2px] border-solid border-btnColors-Mailblue hover:bg-btnColors-Mailblue hover:text-textsColor-texts transition-all duration-500 delay-100">
                     FREE TRIAL
-                </button>
+                </Link>
             </div>
         </div>
     )

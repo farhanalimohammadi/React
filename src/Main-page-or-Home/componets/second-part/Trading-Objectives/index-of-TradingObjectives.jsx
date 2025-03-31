@@ -1,9 +1,9 @@
 import React from "react";
 import BalanceButton from "./components-of-tradingobjectives/Balance";
 import TradingSteps from "./components-of-tradingobjectives/trading-Steps";
-export default function TradingObjectives(){
+export default function TradingObjectives({objectivesRef}){
     return(
-        <div className="flex flex-col justify-between gap-y-[48px] items-center p-8 rounded-2xl bg-componentBg-mainBg w-[85%]">
+        <div ref={objectivesRef} className="flex flex-col justify-between gap-y-[48px] items-center p-8 rounded-2xl bg-componentBg-mainBg w-[85%]">
 
             <div className="flex flex-col justify-between items-start w-full gap-y-8">
                 <h3 className="text-textsColor-texts text-[32px] font-bold ">Trading Objectives</h3>

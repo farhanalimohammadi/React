@@ -161,6 +161,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import React , { lazy , Suspense} from "react";
 import { Navigate } from "react-router-dom";
+import ProtectedRoute from "./signUp-signIn-pages/componets/prodacted-Routes";
 
 //Main branches of Trader :
 const Trader = React.lazy(() => import("./Trader/Trader"));
@@ -179,35 +180,101 @@ const ProfileSecurity = React.lazy(() => import("./Profile-page/Nav-Indexs/index
 const ProfileIdentity = React.lazy(() => import("./Profile-page/Nav-Indexs/index-of-identity"))
 const ProfileLetters = React.lazy(() => import("./Profile-page/Nav-Indexs/index-of-NewLetters"))
 const ProfilePoints = React.lazy(() => import("./Profile-page/Nav-Indexs/index-of-points"))
+const Dashbord = React.lazy(() => import("./Dashbord-Of-Admin/index-of-Dashbord"))
+const DashbordLayout = React.lazy(() => import("./Dashbord-Of-Admin/components/layout/Dashbord-Layout"))
+const User = React.lazy(() => import("./Dashbord-Of-Admin/components/user/user"))
+const DashbordProfile = React.lazy(() => import("./Dashbord-Of-Admin/components/user/user-Profile"))
+const UsersLayout = React.lazy(() => import("./Dashbord-Of-Admin/components/user/users-Layout"))
+const DashbordOrder = React.lazy(() => import("./Dashbord-Of-Admin/components/user/users-Order"))
+const BillingPage = React.lazy(() => import("./billing-page-Admin-User/index-Of-User-billing"))
+const AdminBillingPage = React.lazy(() => import("./billing-page-Admin-User/index-Of-Admin-Billing"))
+const DownloadPage = React.lazy(() => import("./Download-Page/index-Of-Download"))
+const Ticket = React.lazy(() => import("./Ticket-Page/index-Of-Ticket"))
+const Frequently = React.lazy(() => import("./FAQ-Pages/index-of-faq"))
+const FrequentlyLayout = React.lazy(() => import("./FAQ-Pages/layout"))
+const FrequentlysPages = React.lazy(() => import("./FAQ-Pages/components/faq-pages"))
 
 const traderRoutes = [
-  { index: true , element: <Suspense fallback={<div>Loading...</div>}><Trader /></Suspense> },
+  { index: true , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Trader/></ProtectedRoute></Suspense> },
   {
     path: "accountoverview",
-    element: <Suspense fallback={<div>Loading...</div>}><Accounts /></Suspense> ,
+    element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Accounts /></ProtectedRoute></Suspense> ,
     children: [
-      {index: true , element: <Suspense fallback={<div>Loading...</div>}><AccountIndex /></Suspense> },
-      { path: "shopping", element: <Suspense fallback={<div>Loading...</div>}><ShoppingPage /></Suspense> },
-      { path: "freeshopping", element: <Suspense fallback={<div>Loading...</div>}><FreeShopping /></Suspense> },
-      { path: "analisys/:id", element: <Suspense fallback={<div>Loading...</div>}><Analysis /></Suspense> },
-      { path: "shopping/payment", element: <Suspense fallback={<div>Loading...</div>}><Payment /></Suspense> },
+      {index: true , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><AccountIndex /></ProtectedRoute></Suspense> },
+      { path: "shopping", element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ShoppingPage /></ProtectedRoute></Suspense> },
+      { path: "freeshopping", element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><FreeShopping /></ProtectedRoute></Suspense> },
+      { path: "analisys/:id", element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Analysis /></ProtectedRoute></Suspense> },
+      { path: "shopping/payment", element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Payment /></ProtectedRoute></Suspense> },
     ],
   },
   {
   path: "profile",
-  element: <Suspense fallback={<div>Loading...</div>}><AllProfile /></Suspense> ,
+  element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><AllProfile /></ProtectedRoute></Suspense> ,
   children: [
     {index: true  , element: <Navigate to="personalinformation" replace/>},
-    {path : "personalinformation" , element: <Suspense fallback={<div>Loading...</div>}><Profile /></Suspense>},
-    {path : "accountinformation" , element: <Suspense fallback={<div>Loading...</div>}><ProfileAccount /></Suspense>},
-    {path : "security" , element: <Suspense fallback={<div>Loading...</div>}><ProfileSecurity /></Suspense>},
-    {path : "identity" , element: <Suspense fallback={<div>Loading...</div>}><ProfileIdentity /></Suspense>},
-    {path : "newsletters" , element: <Suspense fallback={<div>Loading...</div>}><ProfileLetters /></Suspense>},
-    {path : "points" , element: <Suspense fallback={<div>Loading...</div>}><ProfilePoints /></Suspense>},
+    {path : "personalinformation" , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Profile /></ProtectedRoute></Suspense>},
+    {path : "accountinformation" , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ProfileAccount /></ProtectedRoute></Suspense>},
+    {path : "security" , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ProfileSecurity/></ProtectedRoute></Suspense>},
+    {path : "identity" , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ProfileIdentity /></ProtectedRoute></Suspense>},
+    {path : "newsletters" , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ProfileLetters /></ProtectedRoute></Suspense>},
+    {path : "points" , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><ProfilePoints /></ProtectedRoute></Suspense>},
   ]
+  },
+  {
+    path: "billing",
+    element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><BillingPage/></ProtectedRoute></Suspense> ,
+  },
+  {
+    path : "download",
+    element : <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><DownloadPage/></ProtectedRoute></Suspense>
+  },
+  {
+    path : "ticket",
+    element : <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Ticket/></ProtectedRoute></Suspense>
   },
 ];
 
+const dashbordRoutes = [
+  { index: true , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Dashbord/></ProtectedRoute></Suspense> },
+  {
+    path: "user",
+    element : <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><UsersLayout/></ProtectedRoute></Suspense> ,
+    children : [
+      {index : true , element : <User/>},
+      {path : "profile/:name" , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><DashbordProfile/></ProtectedRoute></Suspense>},
+      {path : "order" , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><DashbordOrder/></ProtectedRoute></Suspense>},
+    ]
+  }
+  ,
+  {
+    path : "billing",
+    element : <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><AdminBillingPage/></ProtectedRoute></Suspense>
+  },
+
+]
+
+const faq = [
+  {
+    path: "", 
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <ProtectedRoute>
+          <Frequently />
+        </ProtectedRoute>
+      </Suspense>
+    ),
+  },
+  {
+    path: ":name",
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <ProtectedRoute>
+          <FrequentlysPages />
+        </ProtectedRoute>
+      </Suspense>
+    ),
+  },
+];
 const Home = React.lazy(() => import("./Main-page-or-Home/index-of-Main"));
 const Login = React.lazy(() => import("./signUp-signIn-pages/sign-Up-In"));
 const TraderLayout = React.lazy(() => import("./Trader/layout"));
@@ -217,8 +284,17 @@ const router = createBrowserRouter([
   { path: "/", element: <Suspense fallback={<div>Loading...</div>}><Home /></Suspense> },
   { path: "/users/:sign", element: <Suspense fallback={<div>Loading...</div>}><Login /></Suspense> },
   { path: "/trader",
-    element: <Suspense fallback={<div>Loading...</div>}><TraderLayout /></Suspense> ,
+    element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><TraderLayout /></ProtectedRoute></Suspense> ,
     children: traderRoutes,
+  },
+  { path: "/dashboard",
+    element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><DashbordLayout /></ProtectedRoute></Suspense> ,
+    children: dashbordRoutes,
+  },
+  {
+    path : "/faq",
+    element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><FrequentlyLayout /></ProtectedRoute></Suspense> ,
+    children: faq,
   },
   { path: "*", element: <Suspense fallback={<div>Loading...</div>}><NotFound /></Suspense> },
 ]);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useRef } from 'react';
 import Header2 from '../staticElems/main-header/header-2';
 import FirstPart from './componets/first-part/entrance';
 import IconsPart from './componets/first-part/firstpartIcons/icons';
@@ -15,17 +15,20 @@ import FooterPage from './componets/last-part/footer-of-page';
 
 import Footer from '../staticElems/footer/Footer';
 export default function Homepage(){
+    const evaluationRef = useRef()
+    const objectivesRef = useRef()
+    const refs = [evaluationRef , objectivesRef]
 
     return(
         <div className='flex flex-col min-h-screen bg-componentBg-primeryBg justify-start w-full'>
             {/* header */}
-            <Header2/>
+            <Header2 refs={refs} />
             <FirstPart/>
             <div className="min-w-[250px] max-w-[1376px] flex flex-col justify-start items-center gap-y-[120px] mx-auto mt-[5px]">
                 <IconsPart/>
                 <UsersSlider/>
-                <Steps/>
-                <TradingObjectives/>
+                <Steps evaluationRef={evaluationRef}/>
+                <TradingObjectives objectivesRef={objectivesRef}/>
                 <FindOutSlider/>
                 <IconsCountery/>
                 <CommentsSlider/>

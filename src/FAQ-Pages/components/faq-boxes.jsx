@@ -40,7 +40,7 @@ const FAQBox = ({ title = 'No Title', questions = [], searchTerm = '' }) => {
             {initialQuestions.map((q, index) => (
               <Link
                 key={index}
-                to={q?.link || '#'}
+                to={q?.link || '/faq'}
                 className={`flex flex-row justify-start items-start gap-x-2 bg-componentBg-inputBg relative before:content-[''] before:absolute before:rounded-[5px] before:bottom-0 before:left-6 before:right-6 before:h-[0.5px] before:bg-[#525252] ${
                   index + 1 === initialQuestions.length && !showMore ? 'rounded-b-[8px]' : 'rounded-none'
                 } w-full p-4 text-textsColor-texts text-nameSize font-semibold ${
@@ -68,7 +68,7 @@ const FAQBox = ({ title = 'No Title', questions = [], searchTerm = '' }) => {
                 {extraQuestions.map((q, index) => (
                   <Link
                     key={index}
-                    to={q?.link || '#'}
+                    to={q?.link || '/faq'}
                     className={`flex flex-row justify-start items-start gap-x-2 bg-componentBg-inputBg relative before:content-[''] before:absolute before:rounded-[5px] before:bottom-0 before:left-6 before:right-6 before:h-[0.5px] before:bg-[#525252] ${
                       index + 1 === extraQuestions.length ? 'rounded-b-[8px]' : 'rounded-none'
                     } w-full p-4 text-textsColor-texts text-nameSize font-semibold ${

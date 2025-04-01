@@ -12,7 +12,7 @@ function FAQlayout() {
       <div className="absolute -right-12 top-6 w-[200px] h-[200px] blur-[150px] bg-btnColors-Mailblue shadow-[0_0_20px_#1481FE] rounded-full z-10"></div>
       <div className="absolute -left-12 bottom-[600px] w-[200px] h-[200px] blur-[150px] bg-btnColors-Mailblue shadow-[0_0_20px_#1481FE] rounded-full z-10"></div>
 
-      <div className="w-full flex flex-col justify-start items-center gap-y-[120px] mt-[140px] ">
+      <div className="w-full flex flex-col justify-start items-center gap-y-[120px] mt-[140px]">
         <div className="flex flex-col justify-center items-center gap-y-8 w-full relative">
           <label className="text-textsColor-texts text-[32px] font-bold" htmlFor="search-faq">Frequently Asked Questions</label>
           <input
@@ -21,7 +21,8 @@ function FAQlayout() {
             name="search-faq" 
             id="search-faq" 
             placeholder="Write Here..." 
-            className="w-[75.66%] bg-componentBg-inputBg rounded-[12px] pl-10 pr-4 py-3 border-none outline-none text-textsColor-texts text-nameSize font-medium z-10 focus:shadow-[0px_0px_30px_-8px_#1481FE] transition-all duration-300 ease-linear "
+            className="w-[75.66%] bg-componentBg-inputBg rounded-[12px] pl-10 pr-4 py-3 border-none outline-none text-textsColor-texts text-nameSize font-medium z-10 focus:shadow-[0px_0px_30px_-8px_#1481FE] transition-all duration-300 ease-linear"
+            value={searchTerm}
           />
           <div className="w-[75.66%] absolute bottom-0 py-3 flex justify-start items-center">
             <span className="ml-2 z-10 cursor-pointer">                    
@@ -32,7 +33,9 @@ function FAQlayout() {
             </span>
           </div>
         </div>
-        <Outlet context={{ searchTerm }}/>
+        <div className="w-full">
+          <Outlet context={{ searchTerm }}/>
+        </div>
       </div>
 
       <Footer/>

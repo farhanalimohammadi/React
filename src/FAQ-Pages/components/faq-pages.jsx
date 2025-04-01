@@ -4,7 +4,7 @@ import FAQBox from './faq-boxes';
 
 const FrequentlysPages = () => {
   const { name } = useParams();
-  const { searchTerm } = useOutletContext();
+  const { searchTerm = '' } = useOutletContext() || {};
 
   const faqData = {
     "New with FTMO": [
@@ -70,6 +70,15 @@ const FrequentlysPages = () => {
     ]
   };
 
+  // Ensure faqData is valid
+  if (!faqData || typeof faqData !== 'object') {
+    return (
+      <div className="w-full flex justify-center items-center p-4">
+        <span className="text-textsColor-texts text-nameSize font-semibold">No FAQ data available.</span>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full flex flex-row justify-between items-stretch px-20">
       <div className="w-[31.31%] flex flex-col justify-start items-end gap-y-3">
@@ -77,8 +86,8 @@ const FrequentlysPages = () => {
           <FAQBox
             key={title}
             title={title}
-            questions={questions}
-            searchTerm={searchTerm || ""}
+            questions={Array.isArray(questions) ? questions : []}
+            searchTerm={searchTerm}
           />
         ))}
       </div>

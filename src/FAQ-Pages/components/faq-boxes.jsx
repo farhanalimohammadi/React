@@ -9,7 +9,10 @@ const FAQBox = ({ title = 'No Title', questions = [], searchTerm = '' }) => {
   const maxVisibleItems = 10;
 
   // Ensure questions is an array and has valid items
-  const safeQuestions = Array.isArray(questions) ? questions.filter(q => q && typeof q === 'object') : [];
+  const safeQuestions = Array.isArray(questions) 
+    ? questions.filter(q => q && typeof q === 'object' && typeof q.question === 'string') 
+    : [];
+  
   const initialQuestions = safeQuestions.slice(0, maxVisibleItems);
   const extraQuestions = safeQuestions.slice(maxVisibleItems);
 

@@ -1,5 +1,4 @@
 import React, {useEffect , useState} from 'react';
-import AccountsOverview from '../Icons/Accounts-Overview.svg'
 import LastPartSid from './sidbar/last-psrt-of-sid';
 import { Link } from 'react-router-dom';
 

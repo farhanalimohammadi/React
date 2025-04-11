@@ -249,29 +249,11 @@ const dashbordRoutes = [
     element : <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><AdminBillingPage/></ProtectedRoute></Suspense>
   },
 
-]
+] 
 
 const faq = [
-  {
-    path: "", 
-    element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <ProtectedRoute>
-          <Frequently />
-        </ProtectedRoute>
-      </Suspense>
-    ),
-  },
-  {
-    path: ":name",
-    element: (
-      <Suspense fallback={<div>Loading...</div>}>
-        <ProtectedRoute>
-          <FrequentlysPages />
-        </ProtectedRoute>
-      </Suspense>
-    ),
-  },
+  {index : true , element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><Frequently /></ProtectedRoute></Suspense>},
+  {path: ":name", element: <Suspense fallback={<div>Loading...</div>}><ProtectedRoute><FrequentlysPages /></ProtectedRoute></Suspense>},
 ];
 const Home = lazy(() => import("./Main-page-or-Home/index-of-Main"));
 const Login = lazy(() => import("./signUp-signIn-pages/sign-Up-In"));

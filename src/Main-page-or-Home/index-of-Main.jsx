@@ -20,11 +20,11 @@ export default function Homepage(){
     const refs = [evaluationRef , objectivesRef]
 
     return(
-        <div className='flex flex-col min-h-screen bg-componentBg-primeryBg justify-start w-full'>
+        <div className='flex flex-col min-h-screen bg-componentBg-primeryBg justify-start w-full overflow-x-hidden'>
             {/* header */}
             <Header2 refs={refs} />
             <FirstPart/>
-            <div className="min-w-[250px] max-w-[1376px] flex flex-col justify-start items-center gap-y-[120px] mx-auto mt-[5px]">
+            <div className="w-full min-w-[250px] max-w-[1376px] flex flex-col justify-start items-center gap-y-[120px] mx-auto mt-[5px] overflow-x-hidden">
                 <IconsPart/>
                 <UsersSlider/>
                 <Steps evaluationRef={evaluationRef}/>

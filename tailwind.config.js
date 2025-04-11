@@ -25,7 +25,11 @@ module.exports = {
 
       fontSize:{
         logoSize: '24px',
-        nameSize: '16px'
+        nameSize: '16px',
+        logoRes: '16px',
+        nameRes: '14px',
+        secondnameRes: '12px',
+        thirdnameRes: '10px',
       },
 
       spacing:{
@@ -35,7 +39,10 @@ module.exports = {
       },
 
       screens:{
-
+        'specialRes': {'min': '390px'},
+        'firstRes': {'min': '500px'},
+        'secondRes': {'min': '700px'},
+        'thirdRes': {'min': '1080px'}
       },
 
     },

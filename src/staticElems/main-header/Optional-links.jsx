@@ -1,86 +1,87 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Links = ({ title, subLinks = [] }) => {
+const Links = ({ title, subLinks = [], onLinkClick }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
+  // Handle click outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+
+    document.addEventListener('click', handleClickOutside, true);
+    return () => document.removeEventListener('click', handleClickOutside, true);
   }, []);
 
-  const handleMouseEnterTitle = () => setIsHovered(true);
-  const handleMouseLeaveTitle = () => setIsHovered(false);
-  const handleMouseEnterDropdown = () => setIsHovered(true);
-  const handleMouseLeaveDropdown = () => setIsHovered(false);
-  const handleClick = (e) => {
+  const handleClick = useCallback((e) => {
     e.preventDefault();
-    setIsOpen((prev) => !prev);
-  };
+    e.stopPropagation();
+    setIsOpen(prev => !prev);
+  }, []);
 
-  const handleSubLinkClick = (subLink) => {
+  const handleSubLinkClick = useCallback((subLink) => {
     setIsOpen(false);
-    setIsHovered(false);
+    
     if (subLink.ref && subLink.ref.current) {
-
       subLink.ref.current.scrollIntoView({ behavior: 'smooth' });
     } else if (subLink.herf) {
       navigate(subLink.herf);
-    } else {
-      alert("the sistem erorr...")
     }
-  };
-
-  const isMenuOpen = isOpen || isHovered;
+    
+    if (onLinkClick) {
+      onLinkClick();
+    }
+  }, [navigate, onLinkClick]);
 
   return (
-    <div className="relative" ref={dropdownRef}>
-        <span
-        className="group flex flex-row justify-start items-center gap-x-2 text-textsColor-texts hover:text-btnColors-Mailblue font-medium transition-all duration-300 ease-linear cursor-pointer"
-        onMouseEnter={handleMouseEnterTitle}
-        onMouseLeave={handleMouseLeaveTitle}
-        onClick={handleClick}
-        >
-            {title}
-            <svg
-            className={`stroke-textsColor-texts ${isMenuOpen ? 'rotate-180' : 'rotate-0'} group-hover:stroke-btnColors-Mailblue duration-300 transition-all ease-linear`}width="24"height="24"viewBox="0 0 24 24"fill="none"xmlns="http://www.w3.org/2000/svg"
-            >
-                <path d="M19.9181 8.9502L13.3981 15.4702C12.6281 16.2402 11.3681 16.2402 10.5981 15.4702L4.07812 8.9502" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+    <div 
+      className="relative w-full cursor-pointer" 
+      ref={dropdownRef}
+      onClick={handleClick}
+    >
+      <div className="select-none group flex flex-row justify-between thirdRes:justify-center thirdRes:gap-x-2  items-center w-full p-2">
+        <span className={`select-none text-textsColor-texts text-nameSize font-medium transition-all group-hover:text-btnColors-Mailblue duration-200 ${
+          isOpen ? 'text-btnColors-Mailblue' : 'hover:text-btnColors-Mailblue'
+        }`}>
+          {title}
         </span>
-      {subLinks.length > 0 && (
-        <div
-          className={`absolute left-0 top-full w-48 bg-componentBg-mainBg rounded-[4px] transform transition-all duration-300 ease-linear ${
-            isMenuOpen
-              ? 'opacity-100 translate-y-0 pointer-events-auto'
-              : 'opacity-0 translate-y-2 pointer-events-none'
+        <svg
+          className={`select-none stroke-textsColor-texts group-hover:stroke-btnColors-Mailblue w-6 h-6 transform transition-all duration-200 ${
+            isOpen ? 'rotate-180' : 'rotate-0'
           }`}
-          onMouseEnter={handleMouseEnterDropdown}
-          onMouseLeave={handleMouseLeaveDropdown}
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <div className="w-full flex flex-col justify-start items-stretch">
+          <path d="M19.9181 8.9502L13.3981 15.4702C12.6281 16.2402 11.3681 16.2402 10.5981 15.4702L4.07812 8.9502" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+
+      {isOpen && (
+        <div className=" select-none thirdRes:absolute relative top-0 thirdRes:top-full left-0 w-full thirdRes:w-48 bg-componentBg-mainBg2 rounded-[4px] transform transition-all duration-200 ease-in-out z-50">
+          <div className=" select-none w-full flex flex-col justify-start items-stretch">
             {subLinks.map((subLink, index) => (
-              <span
+              <button
                 key={index}
-                className={`p-2 cursor-pointer bg-componentBg-mainBg text-textsColor-texts text-[14px] font-medium ${
+                className={` select-none w-full text-left p-4  cursor-pointer text-textsColor-texts text-[14px] font-medium transition-all duration-200 ${
                   index + 1 === subLinks.length
                     ? 'rounded-b-[4px]'
                     : index === 0
                     ? 'rounded-t-[4px]'
                     : 'rounded-none'
-                } hover:bg-btnColors-Mailblue transition-all duration-300 ease-linear`}
-                onClick={() => handleSubLinkClick(subLink)}
+                } hover:bg-btnColors-Mailblue hover:text-white`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleSubLinkClick(subLink);
+                }}
               >
                 {subLink.name}
-              </span>
+              </button>
             ))}
           </div>
         </div>

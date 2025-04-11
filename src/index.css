@@ -166,6 +166,44 @@
     stroke: #1481FE;
 }
 
-  
+/* Custom Pagination Styling */
+/* Custom Pagination Styling */
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
 
-  
+.swiper-pagination-bullet-active {
+  background-color: #1481FE; /* Matches btnColors-Mailblue */
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.mySwiper .swiper-slide {
+  width: 250px !important;
+  height: 300px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease; /* Smooth slide transitions */
+}
+
+.mySwiper {
+  width: 100%;
+  height: auto;
+  padding-bottom: 20px;
+}
+
+/* Fade effect for slides */
+.mySwiper .swiper-slide-prev,
+.mySwiper .swiper-slide-next {
+  opacity: 0.7;
+}
+
+.mySwiper .swiper-slide-active {
+  opacity: 1;
+}
